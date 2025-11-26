@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cerrar Sesión</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ✔ SIDEBAR EXACTO -->
+    <aside>
+        <div class="top">
+            <div class="logo">
+                <img src="img/logo.png" alt="">
+                <h2>ADMIN</h2>
+            </div>
+        </div>
+
+        <div class="sidebar">
+
+            <a href="dashboard.html">
+                <span class="material-icons-sharp">dashboard</span>
+                <h3>Dashboard</h3>
+            </a>
+
+            <a href="datos-personales.html">
+                <span class="material-icons-sharp">person</span>
+                <h3>Datos Personales</h3>
+            </a>
+
+            <a href="agendar-cita.html">
+                <span class="material-icons-sharp">event</span>
+                <h3>Agendar Cita</h3>
+            </a>
+
+            <a href="autorizaciones.html">
+                <span class="material-icons-sharp">approval</span>
+                <h3>Autorizaciones</h3>
+            </a>
+
+            <a href="resultados.html">
+                <span class="material-icons-sharp">assignment</span>
+                <h3>Resultados</h3>
+            </a>
+
+            <a href="notificaciones.html">
+                <span class="material-icons-sharp">notifications</span>
+                <h3>Notificaciones</h3>
+            </a>
+
+            <a href="configuracion.html">
+                <span class="material-icons-sharp">settings</span>
+                <h3>Configuración</h3>
+            </a>
+
+            <!-- ✔ ACTIVO -->
+            <a href="#" class="active">
+                <span class="material-icons-sharp">logout</span>
+                <h3>Cerrar Sesión</h3>
+            </a>
+
+        </div>
+    </aside>
+
+    <!-- ✔ MAIN EXACTO -->
+    <main>
+
+        <h1>Cerrar Sesión</h1>
+
+        <div class="insights">
+
+            <!-- TARJETA CENTRAL IGUAL AL FORMATO QUE USAS -->
+            <div class="sales">
+                <div class="middle">
+                    <h2>¿Deseas cerrar sesión?</h2>
+                    <p style="max-width: 350px; margin-top: 10px;">
+                        Al cerrar sesión, tu cuenta será cerrada en este navegador hasta que inicies sesión nuevamente.
+                    </p>
+
+                    <button class="button" style="
+                        margin-top: 25px;
+                        background: #ff4b4b; 
+                        color: white; 
+                        padding: 12px 25px; 
+                        border-radius: 12px;
+                        border: none;
+                        cursor: pointer;
+                        font-size: 16px;">
+                        Cerrar Sesión
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- ✔ PANEL DERECHO EXACTO -->
+    <div class="right">
+        <div class="top">
+            <button id="menu-btn">
+                <span class="material-icons-sharp">menu</span>
+            </button>
+
+            <div class="theme-toggler">
+                <span class="material-icons-sharp">light_mode</span>
+                <span class="material-icons-sharp active">dark_mode</span>
+            </div>
+
+            <div class="profile">
+                <div class="info">
+                    <p>Hola, <b>Kevin</b></p>
+                    <small class="text-muted">Admin</small>
+                </div>
+                <div class="profile-photo">
+                    <img src="img/user.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

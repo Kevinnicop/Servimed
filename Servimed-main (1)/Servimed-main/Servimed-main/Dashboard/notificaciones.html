@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Notificaciones - MiSalud</title>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp" />
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    .notification-card {
+      background: var(--clr-white);
+      padding: 1.4rem;
+      border-radius: var(--card-border-radius);
+      box-shadow: var(--box-shadow);
+      margin-top: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-left: 6px solid var(--clr-primary);
+    }
+
+    .notification-card.read {
+      opacity: 0.6;
+      border-left: 6px solid var(--clr-info-dark);
+    }
+
+    .notification-info h3 {
+      margin-bottom: 0.3rem;
+    }
+
+    .noti-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn-read,
+    .btn-delete {
+      padding: 0.5rem 1rem;
+      border-radius: var(--border-radius-2);
+      font-weight: 600;
+      cursor: pointer;
+      color: #fff;
+    }
+
+    .btn-read {
+      background: var(--clr-primary);
+    }
+
+    .btn-delete {
+      background: var(--clr-danger);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- ASIDE -->
+    <aside>
+      <div class="top">
+        <div class="logo">
+          <h2>Mi<span class="danger">Salud</span></h2>
+        </div>
+        <div class="close" id="close_btn">
+          <span class="material-symbols-sharp">close</span>
+        </div>
+      </div>
+
+      <div class="sidebar">
+
+        <a href="index.html">
+          <span class="material-symbols-sharp">grid_view</span>
+          <h3>Inicio</h3>
+        </a>
+
+        <a href="datos-personales.html">
+          <span class="material-symbols-sharp">person_outline</span>
+          <h3>Datos Personales</h3>
+        </a>
+
+        <a href="consultas-solicitudes.html">
+          <span class="material-symbols-sharp">insights</span>
+          <h3>Consultas</h3>
+        </a>
+
+        <a href="agendar-cita.html">
+          <span class="material-symbols-sharp">event</span>
+          <h3>Agendar Cita</h3>
+        </a>
+
+        <a href="autorizaciones.html">
+          <span class="material-symbols-sharp">verified_user</span>
+          <h3>Autorizaciones</h3>
+        </a>
+
+        <a href="resultados.html">
+          <span class="material-symbols-sharp">file_copy</span>
+          <h3>Resultados</h3>
+        </a>
+
+        <a href="notificaciones.html" class="active">
+          <span class="material-symbols-sharp">notifications</span>
+          <h3>Notificaciones</h3>
+          <span class="message-count">3</span>
+        </a>
+
+        <a href="#">
+          <span class="material-symbols-sharp">logout</span>
+          <h3>Cerrar Sesión</h3>
+        </a>
+
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main>
+      <h1>Notificaciones</h1>
+
+      <div class="insights" style="grid-template-columns: 1fr;">
+        <div class="sales" style="display:flex; align-items:center;">
+          <span class="material-symbols-sharp">notifications</span>
+          <div class="middle" style="margin-left:1rem;">
+            <h3>Centro de Notificaciones</h3>
+            <p>Revisa tus alertas importantes de salud.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- NOTIFICACIÓN 1 -->
+      <div class="notification-card" id="notif1">
+        <div class="notification-info">
+          <h3>Resultado disponible</h3>
+          <p>Tu examen de sangre ya está listo. Puedes consultarlo en la sección Resultados.</p>
+        </div>
+        <div class="noti-buttons">
+          <button class="btn-read" onclick="markAsRead('notif1')">Marcar leído</button>
+          <button class="btn-delete" onclick="deleteNotif('notif1')">Eliminar</button>
+        </div>
+      </div>
+
+      <!-- NOTIFICACIÓN 2 -->
+      <div class="notification-card" id="notif2">
+        <div class="notification-info">
+          <h3>Recordatorio de cita</h3>
+          <p>Tienes una cita programada para mañana a las 8:00 AM.</p>
+        </div>
+        <div class="noti-buttons">
+          <button class="btn-read" onclick="markAsRead('notif2')">Marcar leído</button>
+          <button class="btn-delete" onclick="deleteNotif('notif2')">Eliminar</button>
+        </div>
+      </div>
+
+      <!-- NOTIFICACIÓN 3 -->
+      <div class="notification-card" id="notif3">
+        <div class="notification-info">
+          <h3>Nueva actualización</h3>
+          <p>Hemos actualizado nuestros términos de uso. Te invitamos a revisarlos.</p>
+        </div>
+        <div class="noti-buttons">
+          <button class="btn-read" onclick="markAsRead('notif3')">Marcar leído</button>
+          <button class="btn-delete" onclick="deleteNotif('notif3')">Eliminar</button>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- RIGHT -->
+    <div class="right">
+      <div class="top">
+        <button id="menu_bar">
+          <span class="material-symbols-sharp">menu</span>
+        </button>
+
+        <div class="theme-toggler">
+          <span class="material-symbols-sharp active">light_mode</span>
+          <span class="material-symbols-sharp">dark_mode</span>
+        </div>
+
+        <div class="profile">
+          <div class="info">
+            <p>Hola, <b>Kevin</b></p>
+            <small class="text-muted">Usuario</small>
+          </div>
+          <div class="profile-photo">
+            <img src="images/profile-1.jpg" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+
+  <script>
+    function markAsRead(id) {
+      document.getElementById(id).classList.add("read");
+    }
+
+    function deleteNotif(id) {
+      document.getElementById(id).style.display = "none";
+    }
+  </script>
+
+</body>
+</html>

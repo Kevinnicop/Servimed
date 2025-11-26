@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agendar Cita</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+<div class="container">
+    <!-- ========== SIDEBAR ========== -->
+    <aside>
+        <div class="top">
+            <div class="logo">
+                <img src="img/logo.png" alt="logo">
+                <h2>ADMIN</h2>
+            </div>
+            <div class="close" id="close_btn">
+                <span>&times;</span>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <a href="index.html">
+                <span class="material-icons-sharp">dashboard</span>
+                <h3>Dashboard</h3>
+            </a>
+
+            <a href="datos-personales.html">
+                <span class="material-icons-sharp">person</span>
+                <h3>Datos Personales</h3>
+            </a>
+
+            <a href="agendar-cita.html" class="active">
+                <span class="material-icons-sharp">event</span>
+                <h3>Agendar Cita</h3>
+            </a>
+
+            <a href="#">
+                <span class="material-icons-sharp">logout</span>
+                <h3>Salir</h3>
+            </a>
+        </div>
+    </aside>
+
+    <!-- ========== MAIN ========== -->
+    <main style="margin-top: 2rem;">
+        <h1>Agendar Cita</h1>
+
+        <div class="agendar-wrapper">
+
+            <form class="form-agendar">
+                <h2>Formulario de Agenda</h2>
+
+                <label>Nombre completo</label>
+                <input type="text" placeholder="Tu nombre" required />
+
+                <label>Fecha de la cita</label>
+                <input type="date" required />
+
+                <label>Hora</label>
+                <input type="time" required />
+
+                <label>Motivo</label>
+                <textarea placeholder="Describe el motivo" required></textarea>
+
+                <button type="submit" class="btn-primary">Agendar cita</button>
+            </form>
+
+            <div class="agendar-info">
+                <h2>Información</h2>
+                <p>💡 Aquí podrás agendar citas relacionadas con trámites, visitas o cualquier otro asunto administrativo.</p>
+                <p>Una vez agendada, la cita aparecerá en tu módulo de notificaciones.</p>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- ========== RIGHT ========== -->
+    <div class="right">
+        <div class="top">
+            <button id="menu_bar">
+                <span class="material-icons-sharp">menu</span>
+            </button>
+
+            <div class="theme-toggler">
+                <span class="material-icons-sharp active">light_mode</span>
+                <span class="material-icons-sharp">dark_mode</span>
+            </div>
+
+            <div class="profile">
+                <div class="info">
+                    <p>Hola, <b>Kevin</b></p>
+                    <small class="text-muted">Admin</small>
+                </div>
+                <div class="profile-photo">
+                    <img src="img/user.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Resultados - MiSalud</title>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp" />
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    .result-card {
+      background: var(--clr-white);
+      padding: 1.4rem;
+      border-radius: var(--card-border-radius);
+      box-shadow: var(--box-shadow);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1rem;
+    }
+
+    .result-status {
+      font-weight: 700;
+    }
+
+    .available {
+      color: var(--clr-success);
+    }
+
+    .pending {
+      color: var(--clr-danger);
+    }
+
+    .btn-view {
+      padding: 0.5rem 1rem;
+      background: var(--clr-primary);
+      color: #fff;
+      border-radius: var(--border-radius-2);
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    /* ---------- MODAL ---------- */
+    .modal-bg {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.55);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      visibility: hidden;
+      opacity: 0;
+      transition: 0.25s ease;
+      z-index: 9999;
+    }
+
+    .modal-bg.active {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .modal-box {
+      background: var(--clr-white);
+      width: 420px;
+      padding: 1.6rem;
+      border-radius: var(--card-border-radius);
+      box-shadow: var(--box-shadow);
+      text-align: center;
+      animation: fade 0.3s ease;
+    }
+
+    @keyframes fade {
+      from { transform: scale(0.85); opacity: 0; }
+      to   { transform: scale(1); opacity: 1; }
+    }
+
+    .close-modal {
+      margin-top: 1rem;
+      padding: .6rem 1.2rem;
+      background: var(--clr-primary);
+      color: white;
+      border-radius: var(--border-radius-2);
+      cursor: pointer;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- ASIDE -->
+    <aside>
+      <div class="top">
+        <div class="logo">
+          <h2>Mi<span class="danger">Salud</span></h2>
+        </div>
+        <div class="close" id="close_btn">
+          <span class="material-symbols-sharp">close</span>
+        </div>
+      </div>
+
+      <div class="sidebar">
+        <a href="index.html">
+          <span class="material-symbols-sharp">grid_view</span>
+          <h3>Inicio</h3>
+        </a>
+
+        <a href="datos-personales.html">
+          <span class="material-symbols-sharp">person_outline</span>
+          <h3>Datos Personales</h3>
+        </a>
+
+        <a href="consultas-solicitudes.html">
+          <span class="material-symbols-sharp">insights</span>
+          <h3>Consultas</h3>
+        </a>
+
+        <a href="agendar-cita.html">
+          <span class="material-symbols-sharp">event</span>
+          <h3>Agendar Cita</h3>
+        </a>
+
+        <a href="autorizaciones.html">
+          <span class="material-symbols-sharp">verified_user</span>
+          <h3>Autorizaciones</h3>
+        </a>
+
+        <a href="resultados.html" class="active">
+          <span class="material-symbols-sharp">file_copy</span>
+          <h3>Resultados</h3>
+        </a>
+
+        <a href="notificaciones.html">
+          <span class="material-symbols-sharp">notifications</span>
+          <h3>Notificaciones</h3>
+        </a>
+
+        <a href="#">
+          <span class="material-symbols-sharp">logout</span>
+          <h3>Cerrar Sesión</h3>
+        </a>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main>
+      <h1>Resultados</h1>
+
+      <div class="insights" style="grid-template-columns: 1fr;">
+        <div class="sales" style="display:flex; align-items:center;">
+          <span class="material-symbols-sharp">file_copy</span>
+          <div class="middle" style="margin-left:1rem;">
+            <h3>Historial de Resultados</h3>
+            <p>Aquí encontrarás los resultados de tus exámenes y estudios.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- TARJETA 1 -->
+      <div class="result-card">
+        <div>
+          <h3>Examen de Sangre</h3>
+          <p class="result-status available">Disponible</p>
+        </div>
+        <button class="btn-view" data-result="sangre">Ver Resultado</button>
+      </div>
+
+      <!-- TARJETA 2 -->
+      <div class="result-card">
+        <div>
+          <h3>Rayos X – Tórax</h3>
+          <p class="result-status pending">Pendiente</p>
+        </div>
+        <button class="btn-view" disabled style="opacity:.5;">No Disponible</button>
+      </div>
+
+      <!-- TARJETA 3 -->
+      <div class="result-card">
+        <div>
+          <h3>Prueba de Orina</h3>
+          <p class="result-status available">Disponible</p>
+        </div>
+        <button class="btn-view" data-result="orina">Ver Resultado</button>
+      </div>
+
+    </main>
+
+    <!-- RIGHT -->
+    <div class="right">
+      <div class="top">
+        <button id="menu_bar"><span class="material-symbols-sharp">menu</span></button>
+
+        <div class="theme-toggler">
+          <span class="material-symbols-sharp active">light_mode</span>
+          <span class="material-symbols-sharp">dark_mode</span>
+        </div>
+
+        <div class="profile">
+          <div class="info">
+            <p>Hola, <b>Kevin</b></p>
+            <small class="text-muted">Usuario</small>
+          </div>
+          <div class="profile-photo">
+            <img src="images/profile-1.jpg" alt="" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- MODAL -->
+  <div class="modal-bg" id="modal_bg">
+    <div class="modal-box" id="modal_box">
+      <h2 id="modal_title">Resultado</h2>
+      <p id="modal_info">Información del resultado.</p>
+      <button class="close-modal" id="close_modal">Cerrar</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+
+  <script>
+    const modalBg = document.getElementById("modal_bg");
+    const modalTitle = document.getElementById("modal_title");
+    const modalInfo = document.getElementById("modal_info");
+    const closeModal = document.getElementById("close_modal");
+
+    document.querySelectorAll(".btn-view").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const type = btn.dataset.result;
+
+        if (type === "sangre") {
+          modalTitle.textContent = "Examen de Sangre";
+          modalInfo.textContent = "Hemoglobina: 14.1 g/dL · Glucosa: 92 mg/dL · Estado general: Normal.";
+        }
+
+        if (type === "orina") {
+          modalTitle.textContent = "Prueba de Orina";
+          modalInfo.textContent = "pH: 6.0 · Proteínas: Negativo · Leucocitos: 2–4 x campo · Resultado normal.";
+        }
+
+        modalBg.classList.add("active");
+      });
+    });
+
+    closeModal.addEventListener("click", () => {
+      modalBg.classList.remove("active");
+    });
+  </script>
+
+</body>
+</html>
